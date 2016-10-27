@@ -4,7 +4,7 @@
 
 // +build go1.5
 
-// marshaler is a tool to automate the creation of methods that satisfy the fmt.Stringer,
+// Marshaler is a tool to automate the creation of methods that satisfy the fmt.Stringer,
 // encoding.TextMarshaler and encoding.TextUnmarshaler interfaces. Given the name of
 // a (signed or unsigned) integer type T that has constants defined, marshaler will
 // create a new self-contained Go source file implementing
@@ -63,7 +63,8 @@
 // (Copyright 2014 The Go Authors. All rights reserved.)
 // Use of this source code is governed by a BSD-style license
 
-// camelToSnake is copied near-verbatim (minus initializms) from github.com/serenize/snaker
+// The camelToSnake function is copied near-verbatim (minus initializms) from
+// github.com/serenize/snaker
 // (Copyright (c) 2015 Serenize UG (haftungsbeschränkt))
 // Use of this source code is governed by a MIT license
 package main // import "github.com/c2h5oh/marshaler"
