@@ -1,6 +1,6 @@
 // Copyright 2016 Maciej Lisiewski. All rights reserved.
 // Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// license that can be found in the LICENSE.md file.
 
 // +build go1.5
 
@@ -44,8 +44,8 @@
 // containing a definitions of
 //
 //	func (Pill) String() string
-//  func (Pill) MarshalText() ([]byte, error)
-//  func (*Pill) UnarshalText() error
+//	func (Pill) MarshalText() ([]byte, error)
+//	func (*Pill) UnarshalText() error
 //
 // If multiple constants have the same value, the lexically first matching name will
 // be used (in the example, Acetaminophen will print as "Paracetamol").
@@ -62,7 +62,7 @@
 // It is a modified version of golang.org/x/tools/cmd/stringer
 // (Copyright 2014 The Go Authors. All rights reserved.)
 // Use of this source code is governed by a BSD-style license
-
+//
 // The camelToSnake function is copied near-verbatim (minus initializms) from
 // github.com/serenize/snaker
 // (Copyright (c) 2015 Serenize UG (haftungsbeschränkt))
