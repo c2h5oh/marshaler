@@ -79,7 +79,7 @@ func Usage() {
 
 func main() {
 	log.SetFlags(0)
-	log.SetPrefix("stringer: ")
+	log.SetPrefix("marshaler: ")
 	flag.Usage = Usage
 	flag.Parse()
 	if len(*typeNames) == 0 {
