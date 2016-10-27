@@ -1,14 +1,10 @@
-package main
+// Copyright 2016 Maciej Lisiewski. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
 
-// This is a modified version of golang.org/x/tools/cmd/stringer
-// (Copyright 2014 The Go Authors. All rights reserved.)
-// Use of this source code is governed by a BSD-style license
+// +build go1.5
 
-// camelToSnake is copied near-verbatim (minus initializms) from github.com/serenize/snaker
-// (Copyright (c) 2015 Serenize UG (haftungsbeschränkt))
-// Use of this source code is governed by a MIT license
-
-// Marshaler is a tool to automate the creation of methods that satisfy the fmt.Stringer,
+// marshaler is a tool to automate the creation of methods that satisfy the fmt.Stringer,
 // encoding.TextMarshaler and encoding.TextUnmarshaler interfaces. Given the name of
 // a (signed or unsigned) integer type T that has constants defined, marshaler will
 // create a new self-contained Go source file implementing
@@ -26,6 +22,31 @@ package main
 // convert the remainder of the constant name to snake_case
 // This can be overridden by passing -noprefix=false -snakecase=false respectively
 //
+// For example, given this snippet,
+//
+//	package painkiller
+//
+//	type Pill int
+//
+//	const (
+//		Placebo Pill = iota
+//		Aspirin
+//		Ibuprofen
+//		Paracetamol
+//		Acetaminophen = Paracetamol
+//	)
+//
+// running this command
+//
+//	marshaler -type=Pill
+//
+// in the same directory will create the file pill_marshaler.go, in package painkiller,
+// containing a definitions of
+//
+//	func (Pill) String() string
+//  func (Pill) MarshalText() ([]byte, error)
+//  func (*Pill) UnarshalText() error
+//
 // If multiple constants have the same value, the lexically first matching name will
 // be used (in the example, Acetaminophen will print as "Paracetamol").
 //
@@ -38,6 +59,14 @@ package main
 // where t is the lower-cased name of the first type listed. It can be overridden
 // with the -output flag.
 //
+// It is a modified version of golang.org/x/tools/cmd/stringer
+// (Copyright 2014 The Go Authors. All rights reserved.)
+// Use of this source code is governed by a BSD-style license
+
+// camelToSnake is copied near-verbatim (minus initializms) from github.com/serenize/snaker
+// (Copyright (c) 2015 Serenize UG (haftungsbeschränkt))
+// Use of this source code is governed by a MIT license
+package main // import "github.com/c2h5oh/marshaler"
 
 import (
 	"bytes"
